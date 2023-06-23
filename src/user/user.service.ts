@@ -22,7 +22,7 @@ export class UserService {
 
   public async signIn(
     signInDto: SignInDto,
-  ): Promise<{ name: string; jwtToken: string; email: string }> {
+  ): Promise<{ name: string; jwtToken: string; email: string; id: string }> {
     const user = await this.findByEmail(signInDto.email);
 
     const match = await this.checkPassword(signInDto.password, user);
@@ -35,7 +35,7 @@ export class UserService {
       user._id.toString(),
     );
 
-    return { name: user.name, jwtToken, email: user.email };
+    return { name: user.name, jwtToken, email: user.email, id: user.id };
   }
 
   private async findByEmail(email: string): Promise<UserDocument> {

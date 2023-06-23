@@ -26,7 +26,7 @@ export class UserController {
   @HttpCode(HttpStatus.OK)
   public async signin(
     @Body() signInDto: SignInDto,
-  ): Promise<{ name: string; jwtToken: string; email: string }> {
+  ): Promise<{ name: string; jwtToken: string; email: string; id: string }> {
     return this.userService.signIn(signInDto);
   }
 
